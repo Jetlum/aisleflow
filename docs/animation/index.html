@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#1b1b21">
+  <title>Pyck · Every move, a smarter next step</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="story.js" defer></script>
+  <script src="animation.js" defer></script>
+</head>
+<body>
+  <div class="shell">
+    <header>
+      <a class="brand" href="./index.html" aria-label="Pyck animation home"><img src="assets/pyck-logo.svg" width="115" height="32" alt="Pyck"></a>
+      <span class="header-caption">THE ADAPTIVE WAREHOUSE</span>
+      <span class="demo-tag"><span></span> AisleFlow concept demo</span>
+    </header>
+    <main>
+      <div class="intro"><div><p class="eyebrow">PROCESS → MOVEMENT → INTELLIGENCE</p><h1>Every move.<br>A <em>smarter</em> next step.</h1></div><p class="intro-copy">From a defined process to an adaptive picking route.<br>See the feedback loop in motion.</p></div>
+      <section class="experience" aria-label="Animated logistics walkthrough">
+        <div class="warehouse-panel">
+          <div class="scene-top"><span><span class="status-dot"></span> HALL 01 <span class="muted">/ PICKING WAVE</span></span><span class="scene-status" id="scene-status">Process ready</span></div>
+          <canvas id="warehouse" role="img" aria-label="Isometric warehouse: the picker completes four tasks on aisle A01, moves to approved aisle A02 after a congestion alert, and finishes at express packing.">Warehouse animation requires canvas support. The chapter descriptions below explain the same workflow.</canvas>
+          <div class="map-legend"><span><i class="swatch green"></i> Active route</span><span><i class="swatch amber"></i> Congested aisle</span><span class="map-note">Schematic · synthetic movements</span></div>
+          <div class="metrics"><div><span>Tasks completed</span><strong id="completed">0 <small>/ 9</small></strong></div><div><span>Current route</span><strong id="aisle">A01</strong></div><div><span>Accepted alerts</span><strong id="alerts">0</strong></div></div>
+        </div>
+        <aside class="story-panel">
+          <div class="story-top"><span class="eyebrow">THE WORKFLOW</span><span id="chapter-count">01 / 05</span></div>
+          <nav class="chapters" aria-label="Animation chapters">
+            <button data-chapter="0" aria-current="step"><span class="step-number">01</span><span><strong>Define the flow</strong><small>BPMN → executable workflow</small></span><span class="step-check">↗</span></button>
+            <button data-chapter="1"><span class="step-number">02</span><span><strong>Put work in motion</strong><small>Temporal → movement tasks</small></span><span class="step-check">↗</span></button>
+            <button data-chapter="2"><span class="step-number">03</span><span><strong>Spot the slowdown</strong><small>Telemetry → congestion alert</small></span><span class="step-check">↗</span></button>
+            <button data-chapter="3"><span class="step-number">04</span><span><strong>Adapt the next task</strong><small>Durable signal → approved route</small></span><span class="step-check">↗</span></button>
+            <button data-chapter="4"><span class="step-number">05</span><span><strong>Finish the wave</strong><small>Express branch → completion</small></span><span class="step-check">↗</span></button>
+          </nav>
+          <div class="narration" aria-live="polite" aria-atomic="true"><span class="detail-kicker" id="detail-kicker">DESIGNED TO EXECUTE</span><h2 id="detail-title">One process. A clear path.</h2><p id="detail-copy">The BPMN compiler validates the picking process and generates a Go workflow plus an Ent task-receipt schema.</p></div>
+          <div class="evidence" id="evidence"><span class="evidence-label">COMPILER OUTPUT</span><div class="compile-flow"><span>BPMN</span><b>→</b><span>Go + Ent</span></div></div>
+        </aside>
+      </section>
+      <section class="transport" aria-label="Playback controls">
+        <button id="play" class="play">Play animation <span aria-hidden="true">▶</span></button>
+        <button id="restart" class="restart" aria-label="Restart animation">↺</button>
+        <label class="sr-only" for="timeline">Animation position in seconds</label><input id="timeline" type="range" min="0" max="54" step="0.1" value="0">
+        <output id="time" for="timeline">00:00 / 00:54</output>
+        <label class="sr-only" for="speed">Playback speed</label><select id="speed"><option value="0.5">0.5× speed</option><option value="1" selected>1× speed</option><option value="1.5">1.5× speed</option><option value="2">2× speed</option></select>
+      </section>
+      <div class="system-flow" aria-label="System architecture"><span>BPMN compiler</span><b>→</b><span>Temporal</span><b>→</b><span>OpenTelemetry</span><b>→</b><span>Analyzer + outbox</span><b>↳</b><span>Next task adapts</span></div>
+    </main>
+    <footer><span>PYCK / FUNCTIONALITY IN MOTION</span><p>Independent AisleFlow prototype · Illustrative playback of the implemented workflow, not live warehouse data or an official Pyck integration.</p><span>01 — 05</span></footer>
+    <noscript><p class="noscript">Enable JavaScript to play the animation. The implemented workflow compiles BPMN, executes picking tasks, detects congestion, sends a durable reroute signal, and completes express packing.</p></noscript>
+  </div>
+</body>
+</html>

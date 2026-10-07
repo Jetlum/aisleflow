@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+                  xmlns:af="https://aisleflow.dev/bpmn/v1"
+                  targetNamespace="https://aisleflow.dev/examples">
+  <bpmn:process id="picking_demo" isExecutable="true">
+    <bpmn:startEvent id="start"/>
+    <bpmn:serviceTask id="pick_01" af:aisle="A01" af:alternative="A02"/>
+    <bpmn:serviceTask id="pick_02" af:aisle="A01" af:alternative="A02"/>
+    <bpmn:serviceTask id="pick_03" af:aisle="A01" af:alternative="A02"/>
+    <bpmn:serviceTask id="pick_04" af:aisle="A01" af:alternative="A02"/>
+    <bpmn:serviceTask id="pick_05" af:aisle="A01" af:alternative="A02"/>
+    <bpmn:serviceTask id="pick_06" af:aisle="A01" af:alternative="A02"/>
+    <bpmn:serviceTask id="pick_07" af:aisle="A01" af:alternative="A02"/>
+    <bpmn:serviceTask id="pick_08" af:aisle="A01" af:alternative="A02"/>
+    <bpmn:exclusiveGateway id="dispatch" af:variable="service"/>
+    <bpmn:serviceTask id="pack_standard" af:aisle="PACK"/>
+    <bpmn:serviceTask id="pack_express" af:aisle="EXPRESS"/>
+    <bpmn:endEvent id="end"/>
+    <bpmn:sequenceFlow id="f01" sourceRef="start" targetRef="pick_01"/>
+    <bpmn:sequenceFlow id="f02" sourceRef="pick_01" targetRef="pick_02"/>
+    <bpmn:sequenceFlow id="f03" sourceRef="pick_02" targetRef="pick_03"/>
+    <bpmn:sequenceFlow id="f04" sourceRef="pick_03" targetRef="pick_04"/>
+    <bpmn:sequenceFlow id="f05" sourceRef="pick_04" targetRef="pick_05"/>
+    <bpmn:sequenceFlow id="f06" sourceRef="pick_05" targetRef="pick_06"/>
+    <bpmn:sequenceFlow id="f07" sourceRef="pick_06" targetRef="pick_07"/>
+    <bpmn:sequenceFlow id="f08" sourceRef="pick_07" targetRef="pick_08"/>
+    <bpmn:sequenceFlow id="f09" sourceRef="pick_08" targetRef="dispatch"/>
+    <bpmn:sequenceFlow id="f10" sourceRef="dispatch" targetRef="pack_standard" af:value="standard"/>
+    <bpmn:sequenceFlow id="f11" sourceRef="dispatch" targetRef="pack_express" af:value="express"/>
+    <bpmn:sequenceFlow id="f12" sourceRef="pack_standard" targetRef="end"/>
+    <bpmn:sequenceFlow id="f13" sourceRef="pack_express" targetRef="end"/>
+  </bpmn:process>
+</bpmn:definitions>

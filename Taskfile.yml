@@ -1,0 +1,42 @@
+version: '3'
+
+tasks:
+  generate:
+    desc: Compile BPMN first, then generate Ent code
+    cmds:
+      - go run ./backend/workflowgen/cmd/bpmn2go
+      - go generate ./backend/analytics/ent
+  generate:check:
+    cmds:
+      - go run ./backend/workflowgen/cmd/bpmn2go --check
+  test:
+    cmds:
+      - go run gotest.tools/gotestsum@v1.12.1 --format pkgname -- -count=1 ./...
+  test:race:
+    cmds:
+      - go test -race -count=1 ./...
+  test:integration:
+    desc: Requires the Compose database and migrated schema
+    env:
+      TEST_DATABASE_URL: postgres://aisleflow_app:aisleflow_demo@localhost:5432/aisleflow?sslmode=disable
+    cmds:
+      - go test -tags=integration -count=1 ./tests/integration
+  demo:local:
+    desc: Real gRPC plus Temporal SDK test environment; no Docker required
+    cmds:
+      - go test -v -count=1 ./tests/closedloop
+  lint:
+    cmds:
+      - go vet ./...
+  build:
+    cmds:
+      - go build ./...
+  up:
+    cmds:
+      - docker compose up -d --build --wait
+  demo:
+    cmds:
+      - docker compose run --rm demo
+  down:
+    cmds:
+      - docker compose down

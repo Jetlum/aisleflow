@@ -1,0 +1,6 @@
+[
+  {"Tenant":"demo","Site":"hall-1","Aisle":"A01","Mean":10,"StdDev":2},
+  {"Tenant":"demo","Site":"hall-1","Aisle":"A02","Mean":10,"StdDev":2},
+  {"Tenant":"demo","Site":"hall-1","Aisle":"PACK","Mean":10,"StdDev":2},
+  {"Tenant":"demo","Site":"hall-1","Aisle":"EXPRESS","Mean":10,"StdDev":2}
+]

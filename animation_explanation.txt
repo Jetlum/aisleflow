@@ -1,0 +1,27 @@
+The animation shows how your warehouse workflow adapts
+  when an aisle slows down:
+
+  1. Define the flow — A BPMN process is validated and
+     compiled into a Go workflow and a task-record schema.
+
+  2. Start picking — Temporal runs picking tasks on A01.
+     Each completed movement sends timing data to the
+     analyzer.
+
+  3. Detect congestion — The fourth movement takes 30
+     seconds. The latest three timings—10, 11, and 30
+     seconds—average 17 seconds, exceeding the 15-second
+     threshold.
+
+  4. Reroute the next task — The alert is saved and
+     delivered to the workflow. The current task finishes,
+     then subsequent picks use the approved alternative,
+     A02.
+
+  5. Finish the wave — The workflow completes four picks
+     on A01, four on A02, and one express-packing task:
+     nine tasks with one accepted reroute alert.
+
+  The animation illustrates your implemented demo using
+  synthetic timings; it isn’t displaying live warehouse
+  activity.

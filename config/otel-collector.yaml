@@ -1,0 +1,36 @@
+receivers:
+  otlp:
+    protocols:
+      grpc:
+        endpoint: 0.0.0.0:4317
+processors:
+  memory_limiter:
+    check_interval: 1s
+    limit_mib: 128
+  batch:
+    timeout: 100ms
+    send_batch_size: 128
+    send_batch_max_size: 1000
+exporters:
+  otlp/analyzer:
+    endpoint: analyzer:4317
+    tls: {insecure: true}
+    headers:
+      x-api-key: demo-local-token-change-me
+    retry_on_failure:
+      enabled: true
+      initial_interval: 1s
+      max_interval: 5s
+      max_elapsed_time: 60s
+    sending_queue:
+      enabled: true
+      queue_size: 1000
+  otlp/jaeger:
+    endpoint: jaeger:4317
+    tls: {insecure: true}
+service:
+  pipelines:
+    traces:
+      receivers: [otlp]
+      processors: [memory_limiter, batch]
+      exporters: [otlp/analyzer, otlp/jaeger]
