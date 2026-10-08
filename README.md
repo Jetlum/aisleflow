@@ -2,7 +2,7 @@
 
 **Compile warehouse processes. Observe movement. Adapt the next task.**
 
-A Go portfolio project combining a strict BPMN-to-Temporal compiler with an OTLP congestion analyzer. Built as an independent demonstration for a senior Go engineering interview; it is not an official Pyck integration.
+A Go project combining a strict BPMN-to-Temporal compiler with an OTLP congestion analyzer. It is an independent demonstration, not an official Pyck integration.
 
 ```mermaid
 flowchart LR
@@ -22,8 +22,6 @@ flowchart LR
 ## Start here
 
 For a visual walkthrough, open **[the Pyck functionality animation](docs/animation/index.html)** in a browser. The interactive 54-second demo illustrates compilation, movement telemetry, congestion detection, and the approved aisle reroute. It runs offline without the backend. See [animation notes](docs/animation/README.md) for controls and scope.
-
-Read **[TECHNICAL_GUIDE.md](TECHNICAL_GUIDE.md)** for the architecture, code walkthrough, formulas, reliability guarantees, tradeoffs, demonstration script, and interview questions.
 
 Go 1.26+ is required. Generated source is included, so generation is not needed just to run the tests.
 
@@ -92,6 +90,6 @@ On a POSIX shell, prefix the test command with `TEST_DATABASE_URL='postgres://..
 
 This is a focused engineering demo. Movement durations are synthetic; the baseline is fixed configuration; detector windows are in memory; one analyzer instance owns them. It supports a documented BPMN subset, not arbitrary BPMN execution. There is no real scanner, hardware, Pyck tenant, NATS integration, GraphQL API, or inventory mutation.
 
-Telemetry export is best effort before database ingestion. After an observation and alert commit, the outbox is durable and delivery is at least once. Routing advice is advisory, not a physical safety system. See the guide for production changes and verification status.
+Telemetry export is best effort before database ingestion. After an observation and alert commit, the outbox is durable and delivery is at least once. Routing advice is advisory, not a physical safety system. See [docs/VERIFICATION.md](docs/VERIFICATION.md) for verification status.
 
 Local credentials and insecure transports are for the loopback-bound development stack only.

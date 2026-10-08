@@ -62,7 +62,7 @@ func TestGeneratedWorkflowOTLPCongestionReroute(t *testing.T) {
 	mover := &activities.Movement{Tracer: provider.Tracer("closedloop")}
 	var suite testsuite.WorkflowTestSuite
 	env := suite.NewTestWorkflowEnvironment()
-	input := contracts.Input{TenantID: "demo", SiteID: "hall-1", WaveID: "interview", Variables: map[string]string{"service": "express"}}
+	input := contracts.Input{TenantID: "demo", SiteID: "hall-1", WaveID: "demo-wave", Variables: map[string]string{"service": "express"}}
 	env.SetStartWorkflowOptions(client.StartWorkflowOptions{ID: contracts.WorkflowID(input.TenantID, input.WaveID)})
 	dispatcher := core.Dispatcher{Store: repo, Signaler: signals{env}, Tenants: []string{"demo"}, MaxAttempts: 3}
 	env.RegisterActivityWithOptions(func(activityCtx context.Context, m contracts.Movement) error {

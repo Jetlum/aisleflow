@@ -4,7 +4,7 @@ Run `node docs/animation/serve.cjs` from the project root and open **http://loca
 
 The story shows the implemented AisleFlow feedback loop: BPMN compilation, Temporal movement activities, movement telemetry, congestion detection, transactional outbox delivery, an approved A01-to-A02 alternative, and the express packing branch. It is an independent concept presentation, not an official Pyck integration or a connected operational dashboard.
 
-The route and synthetic movement samples follow `../../TECHNICAL_GUIDE.md` and `../../tests/closedloop/closedloop_test.go`: four A01 tasks, four A02 tasks, and express packing. The fourth A01 sample gives `(10 + 11 + 30) / 3 = 17 s`, above the configured 15-second threshold. Illustration coordinates and presentation timing are invented for clarity. The live stack can apply the signal at a later task boundary.
+The route and synthetic movement samples follow `../../tests/closedloop/closedloop_test.go`: four A01 tasks, four A02 tasks, and express packing. The fourth A01 sample gives `(10 + 11 + 30) / 3 = 17 s`, above the configured 15-second threshold. Illustration coordinates and presentation timing are invented for clarity. The live stack can apply the signal at a later task boundary.
 
 - `index.html`: accessible page structure and chapter controls.
 - `style.css`: responsive presentation design.
